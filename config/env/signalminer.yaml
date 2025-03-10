@@ -1,0 +1,13 @@
+defaults:
+  - base
+
+_target_: gflownet.envs.signalminer.SignalMiner
+
+id: signalminer
+# Buffer
+buffer:
+  data_path: null
+  train: null
+  test:
+    type: uniform
+    n: 10
