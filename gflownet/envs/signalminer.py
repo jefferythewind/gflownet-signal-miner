@@ -304,7 +304,7 @@ class SignalMiner(GFlowNetEnv):
     
         # One-hot encode the hyperparameter values
         one_hot_states = [
-            F.one_hot(states[:, i], num_classes=self.param_lengths[i] + 1)  # 🔥 Custom encoding per param
+            F.one_hot(states[:, i], num_classes=self.param_lengths[i] + 1)  #Custom encoding per param
             for i in range(self.max_length)
         ]
     

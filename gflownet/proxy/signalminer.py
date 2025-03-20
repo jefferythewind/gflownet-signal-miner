@@ -155,7 +155,7 @@ class SignalMinerProxy(Proxy):
             
             self.data.loc[ self.test_rows, 'pred'] = model.predict(self.test_data)
             validation_era_results = self.data.loc[ self.test_rows ].groupby('era')[[self.target, 'pred']].apply(lambda x: x[[self.target, 'pred']].dropna().corr().iloc[0, 1]).values
-            sharpe_ratio = self.softplus( np.nanmean(validation_era_results), beta=1000.0 )# / np.nanstd(validation_era_results) )
+            sharpe_ratio = np.exp( np.nanmean(validation_era_results) * 100 )# / np.nanstd(validation_era_results) )
         except Exception as e:
             print(f"Error in evaluation: {e}")
             sharpe_ratio = 0.0000001  # Assign worst reward in case of failure
